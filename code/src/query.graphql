@@ -1,5 +1,9 @@
-query {
-  search(query: "stars:>1 sort:stars-desc", type: REPOSITORY, first: 25) {
+query TopRepos($cursor: String) {
+  search(query: "stars:>1 sort:stars-desc", type: REPOSITORY, first: 25, after: $cursor) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
     edges {
       node {
         ... on Repository {
@@ -12,6 +16,12 @@ query {
           pushedAt
           primaryLanguage {
             name
+          }
+          languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
+            edges {
+              size
+              node { name }
+            }
           }
           pullRequests(states: MERGED) {
             totalCount

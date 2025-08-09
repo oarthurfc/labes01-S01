@@ -1,0 +1,5 @@
+gql
+requests
+pandas
+python-dotenv
+requests-toolbelt
