@@ -1,0 +1,32 @@
+query {
+  search(query: "stars:>1 sort:stars-desc", type: REPOSITORY, first: 25) {
+    edges {
+      node {
+        ... on Repository {
+          name
+          owner {
+            login
+          }
+          stargazerCount
+          createdAt
+          pushedAt
+          primaryLanguage {
+            name
+          }
+          pullRequests(states: MERGED) {
+            totalCount
+          }
+          releases {
+            totalCount
+          }
+          issues {
+            totalCount
+          }
+          closed: issues(states: CLOSED) {
+            totalCount
+          }
+        }
+      }
+    }
+  }
+}
