@@ -29,3 +29,5 @@ cd/code
 python src/main.py
 ```
 
+Será gerado um arquivo `repositories.csv` com o resultado do processamento.
+
