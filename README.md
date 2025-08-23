@@ -104,6 +104,19 @@ Para cada repositório, foram extraídas as seguintes métricas:
 - **Dados ausentes:** Classificação como "Unknown" quando não disponível
 - **Robustez:** Sistema de retry com backoff exponencial para lidar com limitações de API
 
+#### 2.4 Hipóteses Informais
+
+Antes da coleta de dados, elaboramos algumas hipóteses iniciais sobre as características esperadas dos repositórios mais populares no GitHub:
+
+- **Hipótese 1 — Maturidade e Atualizações Frequentes**  
+  Projetos populares tendem a ser relativamente antigos (criados há mais de 5 anos), mas ainda recebem atualizações constantes, pois são mantidos por grandes comunidades.
+
+- **Hipótese 2 — Contribuições Externas e Gestão de Issues**  
+   Repositórios populares (mais de 50 mil estrelas) tendem a acumular ao menos 5.000 pull requests mergeadas ao longo do tempo e manter uma taxa de fechamento de issues superior a 80%.
+
+- **Hipótese 3 — Linguagens Consolidadas**  
+  A maioria dos repositórios populares é escrita em linguagens amplamente difundidas e consolidadas (JavaScript, Python, Java), em vez de linguagens de nicho ou recentes.
+
 ### 3. Resultados Obtidos
 
 #### 3.1 Repositórios Mais Populares
