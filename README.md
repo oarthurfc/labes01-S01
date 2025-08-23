@@ -1,17 +1,26 @@
-# labes01-S01
-(Lab01S01) - Laboratório de Experimentação de Software 01, Sprint 01
-
-# Análise dos Top 100 Repositórios do GitHub
+# Características de repositórios populares do GitHub
 
 ## Sobre o Projeto
 
-Este projeto coleta e analisa dados dos 100 repositórios mais populares (por número de estrelas) do GitHub, utilizando a API GraphQL oficial. O objetivo é extrair insights sobre tendências de desenvolvimento, linguagens de programação mais utilizadas, e padrões de contribuição na comunidade open-source.
+Este projeto coleta e analisa dados dos repositórios mais populares (por número de estrelas) do GitHub, utilizando a API GraphQL oficial. O objetivo é extrair insights sobre tendências de desenvolvimento, linguagens de programação mais utilizadas, e padrões de contribuição na comunidade open-source.
 
 ## Como Executar
 
 ### Pré-requisitos
 - Python 3.13.6
 - Token de acesso pessoal do GitHub
+
+## Estrutura do Projeto
+
+```
+├── code/
+│   ├── src/
+│   ├── main.py          # Script principal de coleta
+│   └── query.graphql    # Query GraphQL para API GitHub
+├── .env                 # Token de acesso GitHub (não versionado)
+├── requirements.txt     # Dependências Python
+└── repositories.csv     # Resultado da análise (gerado)
+```
 
 ### Configuração do Ambiente
 
@@ -55,6 +64,7 @@ python src/main.py
 O arquivo `repositories.csv` será gerado com os dados coletados.
 
 ---
+
 
 ## Relatório de Análise
 
@@ -209,22 +219,3 @@ A análise dos top 100 repositórios GitHub revela um ecossistema diversificado 
 Esta análise fornece uma fotografia valiosa do estado atual do desenvolvimento open-source e sugere direções futuras para tecnologias e práticas de desenvolvimento de software.
 
 ---
-
-## Estrutura do Projeto
-
-```
-├── src/
-│   ├── main.py          # Script principal de coleta
-│   └── query.graphql    # Query GraphQL para API GitHub
-├── .env                 # Token de acesso GitHub (não versionado)
-├── requirements.txt     # Dependências Python
-└── repositories.csv     # Resultado da análise (gerado)
-```
-
-## Dependências
-
-- `gql` - Cliente GraphQL para Python
-- `pandas` - Manipulação e análise de dados
-- `python-dotenv` - Gerenciamento de variáveis de ambiente
-- `requests` - Requisições HTTP
-
