@@ -7,7 +7,7 @@ from gql.transport.requests import RequestsHTTPTransport
 from requests.exceptions import HTTPError, RequestException
 
 # Config
-MAX_REPOS = 100       # total repositórios
+MAX_REPOS = 1000       # total repositórios
 PAGE_SIZE = 25        # 25 por chamada
 MAX_RETRIES = 4       # tentativas por página
 RETRY_BASE = 1.5      # fator para retentativas
