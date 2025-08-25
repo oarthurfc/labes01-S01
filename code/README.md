@@ -37,7 +37,7 @@ time - módulo para manipulação de tempo
 requests - módulo para trabalhar com requisições e exceções
 gql - módulo para trabalhar com GraphQL
 Client - módulo para criar um cliente GraphQL autenticado via token e realizar requisições
-
+pandas, seaborn, matplotlib - módulos para análise e visualização de dados gráficos
 
 
 
