@@ -15,9 +15,9 @@ source .venv/Scripts/activate
 pip install -r requirements.txt
 ```
 
-# Para rodar o projeto 
+# Para gerar o relatório com os dados coletados do GitHub
 
-Com o ambiente virtual ativo, execute o seguinte comando:
+Com o ambiente virtual ativado e as dependências instaladas, execute o seguinte comando:
 
 1. Navegue até o diretório do projeto
 ```bash
@@ -29,6 +29,22 @@ cd/code
 python src/main.py
 ```
 Será gerado um arquivo `repositories.csv` com o resultado do processamento.
+
+# Para gerar os gráficos a partir do arquivo CSV gerado
+
+Com o ambiente virtual ativado e as dependências instaladas, além de o arquivo CSV já gerado, execute o seguinte comando:
+
+1. Navegue até o diretório /code
+```bash
+cd/code
+```
+
+2. Execute o script
+```bash
+python src/graficos_rqs.py
+```
+
+3. Serão gerados os gráficos de análise na pasta code/graficos
 
 # Dependências do projeto
 load_dotenv - módulo para carregar variáveis de ambiente
