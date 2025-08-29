@@ -78,8 +78,9 @@ def rq02(df):
     salvar_grafico("RQ02_disp_stars_vs_prs")
 
     # Boxplot de PRs por Linguagem (top8)
+    df_lang = df[df["lang_top8"] != "Unknown"]
     plt.figure(figsize=(10, 5))
-    sns.boxplot(x="lang_top8", y="pullRequests", data=df, showfliers=False)
+    sns.boxplot(x="lang_top8", y="pullRequests", data=df_lang, showfliers=False)
     plt.title("RQ02 – PRs por linguagem (boxplot)")
     plt.xlabel("Linguagem (top8)"); plt.ylabel("Pull Requests")
     plt.xticks(rotation=30, ha="right")
@@ -147,7 +148,7 @@ def rq05(df):
     plt.figure(figsize=(10, 5))
     sns.barplot(x=top15.index, y=top15.values, estimator=sum, errorbar=None)
     plt.title("RQ05 – Top 15 linguagens entre os 1000 repositórios mais estrelados")
-    plt.xlabel("Linguagem");
+    plt.xlabel("Linguagem")
     plt.ylabel("Qtd repositórios")
     plt.xticks(rotation=45, ha="right")
     salvar_grafico("RQ05_barras_top15_linguagens")
@@ -166,14 +167,27 @@ def rq05(df):
     plt.figure(figsize=(8, 6))
     sns.heatmap(ct, annot=True, fmt="d", cbar=True)
     plt.title("RQ05 – Heatmap: linguagem × faixa de estrelas")
-    plt.xlabel("Faixa de estrelas"); plt.ylabel("Linguagem (top8)")
+    plt.xlabel("Faixa de estrelas"); plt.ylabel("Linguagem")
     salvar_grafico("RQ05_heatmap_lang_star_bucket")
 
 # =========================================
 # RQ06 – % de issues fechadas
 # =========================================
 
-    # to-do
+def rq06(df):
+    """Histograma de % de issues fechadas"""
+
+    # repositórios com issues > 0
+    mask = df["issues"] > 0
+
+    pct = (df.loc[mask, "closedIssues"] / df.loc[mask, "issues"]) * 100
+    plt.figure(figsize=(8, 5))
+    sns.histplot(pct, bins=20, kde=False)
+    plt.title("RQ06 – Distribuição: % de issues fechadas")
+    plt.xlabel("% de issues fechadas")
+    salvar_grafico("RQ06_hist_closed_issues_pct")
+
+    print(f"RQ06: n={pct.size}, média={pct.mean():.2f}%, mediana={pct.median():.2f}%")
 
 
 # =========================================
@@ -192,24 +206,24 @@ def rq07(df):
         )
     )
 
-    plt.figure(figsize=(10, 4))
+    plt.figure(figsize=(10, 6))
     sns.barplot(x="lang_top8", y="median_prs", data=agg, errorbar=None)
     plt.title("RQ07 – Mediana de PRs por linguagem")
-    plt.xlabel("Linguagem (top8)"); plt.ylabel("Mediana de PRs")
+    plt.xlabel("Linguagem"); plt.ylabel("Mediana de PRs")
     plt.xticks(rotation=30, ha="right")
     salvar_grafico("RQ07_barras_mediana_prs_por_linguagem")
 
-    plt.figure(figsize=(10, 4))
+    plt.figure(figsize=(10, 6))
     sns.barplot(x="lang_top8", y="median_releases", data=agg, errorbar=None)
     plt.title("RQ07 – Mediana de releases por linguagem")
-    plt.xlabel("Linguagem (top8)"); plt.ylabel("Mediana de releases")
+    plt.xlabel("Linguagem"); plt.ylabel("Mediana de releases")
     plt.xticks(rotation=30, ha="right")
     salvar_grafico("RQ07_barras_mediana_releases_por_linguagem")
 
-    plt.figure(figsize=(10, 4))
+    plt.figure(figsize=(10, 6))
     sns.barplot(x="lang_top8", y="median_days_since_update", data=agg, errorbar=None)
-    plt.title("RQ07 – Comparativo entre linguagens: dias sem atualização (mediana)")
-    plt.xlabel("Linguagem (top8)"); plt.ylabel("Mediana (dias)")
+    plt.title("RQ07 – Comparativo entre linguagens: dias sem atualização")
+    plt.xlabel("Linguagem"); plt.ylabel("Dias")
     plt.xticks(rotation=30, ha="right")
     salvar_grafico("RQ07_barras_mediana_days_since_update_por_linguagem")
 
@@ -223,6 +237,7 @@ def main():
     rq03(df)
     rq04(df)
     rq05(df)
+    rq06(df)
     rq07(df)
 
 if __name__ == "__main__":
